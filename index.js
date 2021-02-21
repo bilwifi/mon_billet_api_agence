@@ -15,8 +15,8 @@ server.get("/api/reservations/:id", async (req, res) => {
           res.status(404)
           return res.json({message : "Billet Invalide"});
       }
-    //   const etineraire = await result.length ? await db("itineraire").where({iditineraire : reservation.iditineraire}) : null
-    //   reservation['etineraire'] = etineraire ? etineraire[0] : null
+      const etineraire =  await db("itineraire").where({iditineraire : reservation.iditineraire}) 
+      reservation['etineraire'] = etineraire ? etineraire[0] : null
       return res.json(result[0]);
     })
     .catch((err) => {
