@@ -1,7 +1,9 @@
 const express = require("express");
 const db = require("./db");
 const server = express();
-
+server.get('/',(req,res)=>{
+    return res.send("<h1>Mon Billet API | Agence</h1>")
+})
 server.get("/api/reservations/:id", async (req, res) => {
   db("reservation")
     .join("bus", "bus.idbus", "reservation.idbus")
