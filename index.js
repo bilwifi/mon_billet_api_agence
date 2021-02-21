@@ -17,6 +17,9 @@ server.get("/api/reservations/:id", async (req, res) => {
       }
       const etineraire =  await db("itineraire").where({iditineraire : reservation.iditineraire}) 
       reservation['etineraire'] = etineraire ? etineraire[0] : null
+
+      const agence =  await db("agence").where({idagence : reservation.idagence}) 
+      reservation['agence'] = agence ? agence[0] : null
       return res.json(result[0]);
     })
     .catch((err) => {
